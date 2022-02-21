@@ -14,7 +14,7 @@ run those following command in your terminal:
 ` python ./manage.py migrate `
 
 ## Run server
-start our server at local and listen port 8000
+start our server at local and listening at port 8000
 
 ` python ./mange.py runserver 0.0.0.0:8000`
 
