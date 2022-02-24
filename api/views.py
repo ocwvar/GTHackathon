@@ -1,13 +1,30 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from rest_framework.views import APIView
-from rest_framework.response import Response
+from .models import SavedData
 
 
 class RequestEvent(APIView):
 
     def get(self, request, *args, **kwargs):
-        return HttpResponse('R')
+        movement_code = self.request.GET.get("movement", "F")
+        saved_list = SavedData.objects.filter(code="ME")
+
+        if saved_list.count() == 0 :
+            new_object = SavedData(code="ME", move=movement_code)
+            new_object.save()
+        else:
+            save_object = saved_list[0]
+            save_object.move = movement_code
+            save_object.save(update_fields=["move"])
+
+        return HttpResponse("Saved")
 
     def post(self, request, *args, **kwargs):
-        return HttpResponse('R')
+        saved_list = SavedData.objects.filter(code="ME")
+        if saved_list.count() == 0 :
+            return HttpResponse("F")
+        else:
+            save_object = saved_list[0]
+            return HttpResponse(save_object.move)
+    
