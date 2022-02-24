@@ -6,7 +6,7 @@ from rest_framework.response import Response
 class RequestEvent(APIView):
 
     def get(self, request, *args, **kwargs):
-        return Response("R")
+        return Response('R')
 
     def post(self, request, *args, **kwargs):
-        return Response("R")
+        return Response('R')
