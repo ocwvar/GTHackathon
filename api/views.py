@@ -21,6 +21,9 @@ class RequestEvent(APIView):
         return HttpResponse("Saved")
 
     def post(self, request, *args, **kwargs):
+        print("#######")
+        print(self.request.body)
+
         saved_list = SavedData.objects.filter(code="ME")
         if saved_list.count() == 0:
             return HttpResponse("T")
