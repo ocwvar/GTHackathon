@@ -3,5 +3,5 @@ from .views import RequestEvent
 
 
 urlpatterns = [
-    path('hello_world', RequestEvent.as_view()),
+    path('', RequestEvent.as_view()),
 ]

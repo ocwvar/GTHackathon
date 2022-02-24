@@ -4,5 +4,5 @@ from rest_framework.response import Response
 
 
 class RequestEvent(APIView):
-    def get(self, request, *args, **kwargs):
-        return Response("hello world!")
+    def post(self, request, *args, **kwargs):
+        return Response("R")
